@@ -15,6 +15,15 @@ import com.superforce.mybank.repository.CustomerRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Customer Service Impl Class - we can handle the customer functionalities of
+ * creating a customer and pass the values to customer account creation services.
+ * 
+ * @author Govindasamy.C
+ * @since 20-02-2020
+ * @version V1.1
+ *
+ */
 @Service
 @Slf4j
 @Transactional
@@ -22,6 +31,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	AccountRegistery accountRegistery;
 
 	/**
 	 * 
@@ -34,9 +46,7 @@ public class CustomerServiceImpl implements CustomerService {
 	 *                                       exception.
 	 * @since 20-02-2020
 	 */
-	@Autowired
-	AccountRegistery accountRegistery;
-
+	
 	@Override
 	public AccountCreateResponseDto createCustomerAccount(CustomerDto customerDto)
 			throws AccountCreationFailedException {
