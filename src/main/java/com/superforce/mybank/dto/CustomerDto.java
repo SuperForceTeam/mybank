@@ -15,11 +15,12 @@ public class CustomerDto {
 
 	@NotNull(message = AppConstant.NAME_SHOULD_BE_NOT_NULL)
 	private String name;
-	@NotNull(message = AppConstant.NAME_SHOULD_BE_NOT_NULL)
+	@NotNull(message = AppConstant.EMAIL_SHOULD_BE_NOT_NULL)
 	@Email(message = AppConstant.INVALID_EMAIL)
 	private String emailAddress;
 	private String fatherName;
 	private String address;
+	@NotNull(message = AppConstant.PAN_NUMBER_SHOULD_BE_NOT_NULL)
 	private String panNumber;
 	private AccountType accountType;
 	private Long phoneNumber;

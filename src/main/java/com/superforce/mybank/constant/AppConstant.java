@@ -9,6 +9,7 @@ public class AppConstant {
 	// Customer
 	public static final String NAME_SHOULD_BE_NOT_NULL = "Name should not be null";
 	public static final String EMAIL_SHOULD_BE_NOT_NULL = "Email Address should not be null";
+	public static final String PAN_NUMBER_SHOULD_BE_NOT_NULL = "Pan Number should not be null";
 
 	public static final String INVALID_EMAIL = "Invalid Email Address";
 

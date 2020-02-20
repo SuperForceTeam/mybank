@@ -51,6 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		AccountDto accountDto = new AccountDto();
 		BeanUtils.copyProperties(createCustomer, accountDto);
+		accountDto.setCustomerId(createCustomer.getCustomerId());
 		return accountRegistery.getServiceBean(customerDto.getAccountType().toString()).createAccount(accountDto);
 	}
 
