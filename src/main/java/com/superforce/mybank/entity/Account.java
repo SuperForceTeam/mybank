@@ -20,7 +20,7 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountNumber")
 	private Long accountNumber;
-	private Long userId;
+	private Integer userId;
 	private double balance;
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;

@@ -35,6 +35,7 @@ public class SavingsAccountImpl implements AccountService {
 		Account account = new Account();
 		account.setBalance(1000);
 		account.setAccountType(accountDto.getAccountType());
+		account.setUserId(accountDto.getCustomerId());
 		account = accountRepository.save(account);
 		log.info("MortgageAccountImpl createAccount ----> Mortgage Account created");
 		accountCreateResponseDto.setMessage(AppConstant.SAVINGS_ACCOUNT_CREATED);

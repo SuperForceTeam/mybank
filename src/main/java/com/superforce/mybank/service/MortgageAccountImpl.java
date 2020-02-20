@@ -43,6 +43,7 @@ public class MortgageAccountImpl implements AccountService {
 		Double mortgageAmount = accountDto.getSalaryAmount() *3;
 		account.setBalance(-mortgageAmount);
 		account.setAccountType(accountDto.getAccountType());
+		account.setUserId(accountDto.getCustomerId());
 		account = accountRepository.save(account);
 		log.info("MortgageAccountImpl createAccount ----> Mortgage Account created");
 		AccountCreateResponseDto accountCreateResponseDto = new AccountCreateResponseDto();

@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Customer Controller Class - we can handle the customer functionalities of
- * creating a customer and pass the values to customer creation services.
+ * creating a customer and pass the values to customer account creation services.
  * 
  * @author Govindasamy.C
  * @since 20-02-2020
