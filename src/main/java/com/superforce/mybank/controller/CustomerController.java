@@ -47,7 +47,7 @@ public class CustomerController {
 	 * @since 20-02-2020
 	 */
 	@PostMapping
-	public ResponseEntity<ResponseDto> createCustomer(@Valid @RequestBody CustomerDto customerDto)
+	public ResponseEntity<ResponseDto> createCustomerAccount(@Valid @RequestBody CustomerDto customerDto)
 			throws CustomerAlreadyExistException {
 		log.info("create a new customer for customer account...");
 		customerService.createCustomerAccount(customerDto);

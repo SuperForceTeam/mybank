@@ -24,6 +24,17 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
+	/**
+	 * 
+	 * @param customerDto - details of the customer details with account details of
+	 *                    type.
+	 * @return details of the response details of status code and message.
+	 * @author Govindasamy.C
+	 * @throws CustomerAlreadyExistException - if customer details is already exists
+	 *                                       in the application throws this
+	 *                                       exception.
+	 * @since 20-02-2020
+	 */
 	@Override
 	public void createCustomerAccount(CustomerDto customerDto) throws CustomerAlreadyExistException {
 		log.info("create a new customer for customer account...");
@@ -36,9 +47,10 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer createCustomer = new Customer();
 		log.info("setting values to dto to customer entity...");
 		BeanUtils.copyProperties(customerDto, createCustomer);
-		
+
 		log.info("save the customer entity values...");
 		customerRepository.save(createCustomer);
+
 	}
 
 }
