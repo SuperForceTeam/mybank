@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.superforce.mybank.constant.AppConstant;
 import com.superforce.mybank.dto.CustomerDto;
 import com.superforce.mybank.dto.ResponseDto;
+import com.superforce.mybank.exception.CustomerAlreadyExistException;
 import com.superforce.mybank.service.CustomerService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,10 +41,14 @@ public class CustomerController {
 	 *                    type.
 	 * @return details of the response details of status code and message.
 	 * @author Govindasamy.C
+	 * @throws CustomerAlreadyExistException - if customer details is already exists
+	 *                                       in the application throws this
+	 *                                       exception.
 	 * @since 20-02-2020
 	 */
 	@PostMapping
-	public ResponseEntity<ResponseDto> createCustomer(@Valid @RequestBody CustomerDto customerDto) {
+	public ResponseEntity<ResponseDto> createCustomer(@Valid @RequestBody CustomerDto customerDto)
+			throws CustomerAlreadyExistException {
 		log.info("create a new customer for customer account...");
 		customerService.createCustomerAccount(customerDto);
 		ResponseDto responseDto = new ResponseDto();
