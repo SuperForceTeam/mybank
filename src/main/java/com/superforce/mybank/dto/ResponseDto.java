@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 public class ResponseDto {
 
-	private Integer statusCode;
+	private String statusCode;
 	private String message;
 }

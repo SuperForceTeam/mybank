@@ -11,11 +11,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
+import com.superforce.mybank.constant.AppConstant;
+import com.superforce.mybank.dto.ResponseDto;
+
+@RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	/**
@@ -38,6 +42,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 		body.put("errors", errors);
 		return new ResponseEntity<>(body, headers, HttpStatus.OK);
+	}
+
+	@ExceptionHandler(AccountCreationFailedException.class)
+	public ResponseDto mortgageAccountCreationFailedException(AccountCreationFailedException e) {
+		ResponseDto responseDto = new ResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatusCode(AppConstant.MORTGAGE_ACCOUNT_FAIL_CODE);
+		return responseDto;
+	}
+
+	@ExceptionHandler(CustomerAlreadyExistException.class)
+	public ResponseDto customerAlreadyExistException(CustomerAlreadyExistException e) {
+		ResponseDto responseDto = new ResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatusCode(AppConstant.CUSTOMER_ALREADY_EXIST);
+		return responseDto;
 	}
 
 }

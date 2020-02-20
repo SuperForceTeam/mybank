@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.superforce.mybank.constant.AppConstant;
+import com.superforce.mybank.dto.AccountCreateResponseDto;
 import com.superforce.mybank.dto.CustomerDto;
-import com.superforce.mybank.dto.ResponseDto;
+import com.superforce.mybank.exception.AccountCreationFailedException;
 import com.superforce.mybank.exception.CustomerAlreadyExistException;
 import com.superforce.mybank.service.CustomerService;
 
@@ -44,19 +44,18 @@ public class CustomerController {
 	 * @throws CustomerAlreadyExistException - if customer details is already exists
 	 *                                       in the application throws this
 	 *                                       exception.
+	 * @throws AccountCreationFailedException 
 	 * @since 20-02-2020
 	 */
 	@PostMapping
-	public ResponseEntity<ResponseDto> createCustomer(@Valid @RequestBody CustomerDto customerDto)
-			throws CustomerAlreadyExistException {
+	public ResponseEntity<AccountCreateResponseDto> createCustomerAccount(@Valid @RequestBody CustomerDto customerDto)
+			throws CustomerAlreadyExistException, AccountCreationFailedException {
 		log.info("create a new customer for customer account...");
-		customerService.createCustomerAccount(customerDto);
-		ResponseDto responseDto = new ResponseDto();
+		AccountCreateResponseDto accountCreateResponseDto = customerService.createCustomerAccount(customerDto);
 		log.info("setting the response values in customer account creation...");
-		responseDto.setMessage(AppConstant.CUSTOMER_CREATED_SUCCESSFULLY);
-		responseDto.setStatusCode(HttpStatus.CREATED.value());
+		accountCreateResponseDto.setStatusCode(HttpStatus.CREATED.value());
 		log.info("return the response values in customer account creation...");
-		return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.OK);
+		return new ResponseEntity<>(accountCreateResponseDto, HttpStatus.OK);
 	}
 
 }
