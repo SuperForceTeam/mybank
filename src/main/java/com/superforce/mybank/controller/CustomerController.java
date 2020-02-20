@@ -41,20 +41,15 @@ public class CustomerController {
 	 *                    type.
 	 * @return details of the response details of status code and message.
 	 * @author Govindasamy.C
-	 * @throws CustomerAlreadyExistException - if customer details is already exists
-	 *                                       in the application throws this
-	 *                                       exception.
-	 * @throws AccountCreationFailedException 
+	 * @throws CustomerAlreadyExistException  - if customer details is already
+	 *                                        exists in the application throws this
+	 *                                        exception.
+	 * @throws AccountCreationFailedException
 	 * @since 20-02-2020
 	 */
 	@PostMapping
-<<<<<<< HEAD
-	public ResponseEntity<ResponseDto> createCustomerAccount(@Valid @RequestBody CustomerDto customerDto)
-			throws CustomerAlreadyExistException {
-=======
 	public ResponseEntity<AccountCreateResponseDto> createCustomerAccount(@Valid @RequestBody CustomerDto customerDto)
-			throws CustomerAlreadyExistException, AccountCreationFailedException {
->>>>>>> master
+			throws AccountCreationFailedException {
 		log.info("create a new customer for customer account...");
 		AccountCreateResponseDto accountCreateResponseDto = customerService.createCustomerAccount(customerDto);
 		log.info("setting the response values in customer account creation...");

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.superforce.mybank.constant.AppConstant;
 import com.superforce.mybank.dto.AccountCreateResponseDto;
-import com.superforce.mybank.dto.CustomerDto;
+import com.superforce.mybank.dto.AccountDto;
 import com.superforce.mybank.entity.Account;
 import com.superforce.mybank.repository.AccountRepository;
 
@@ -29,12 +29,12 @@ public class SavingsAccountImpl implements AccountService {
 	 *         Message.
 	 */
 	@Override
-	public AccountCreateResponseDto createAccount(CustomerDto customerDto) {
+	public AccountCreateResponseDto createAccount(AccountDto accountDto) {
 		log.info("SavingsAccountImpl createAccount ----> creating Savings Account");
 		AccountCreateResponseDto accountCreateResponseDto = new AccountCreateResponseDto();
 		Account account = new Account();
 		account.setBalance(1000);
-		account.setAccountType(customerDto.getAccountType());
+		account.setAccountType(accountDto.getAccountType());
 		account = accountRepository.save(account);
 		log.info("MortgageAccountImpl createAccount ----> Mortgage Account created");
 		accountCreateResponseDto.setMessage(AppConstant.SAVINGS_ACCOUNT_CREATED);
