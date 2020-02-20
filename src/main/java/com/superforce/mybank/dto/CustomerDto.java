@@ -1,7 +1,5 @@
 package com.superforce.mybank.dto;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -25,6 +23,5 @@ public class CustomerDto {
 	private String panNumber;
 	private AccountType accountType;
 	private Long phoneNumber;
-	private LocalDate dob;
 	private Double salaryAmount;
 }

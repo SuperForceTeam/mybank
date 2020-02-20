@@ -36,6 +36,6 @@ public class Customer {
 	private String panNumber;
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
-	private LocalDate dob;
+	private Long phoneNumber;
 	private Double salaryAmount;
 }
